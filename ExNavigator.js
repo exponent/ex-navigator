@@ -20,6 +20,36 @@ import ExSceneConfigs from './ExSceneConfigs';
 
 import type * as ExRoute from './ExRoute';
 
+class NavigationBarTwo extends React.Component {
+  constructor (...rest) {
+    super(...rest)
+
+    this.state = {
+      show: true
+    }
+  }
+
+  hide () {
+    if (this.state.show) {
+      this.setState({show: false})
+    }
+  }
+
+  show () {
+    if (!this.state.show) {
+      this.setState({show: true})
+    }
+  }
+
+  render () {
+    if (this.state.show) {
+      return <Navigator.NavigationBar {...this.props}/>
+    } else {
+      return null
+    }
+  }
+}
+
 export default class ExNavigator extends React.Component {
   static Styles = ExNavigatorStyles
   static SceneConfigs = ExSceneConfigs;
@@ -43,6 +73,15 @@ export default class ExNavigator extends React.Component {
     },
   };
 
+  @autobind
+  _renderNavigationBarTwo () {
+    return <NavigationBarTwo
+      routeMapper={this._routeRenderer.navigationBarRouteMapper}
+      style={[ExNavigatorStyles.bar, this.props.navigationBarStyle]}
+      ref={this._setNavigationBarRef}
+      />
+  }
+
   constructor(props, context) {
     super(props, context);
     // NOTE: currently only the initial props are honored
@@ -60,7 +99,7 @@ export default class ExNavigator extends React.Component {
         ref={this._setNavigatorRef}
         configureScene={this._routeRenderer.configureScene}
         renderScene={this._renderScene}
-        navigationBar={this._renderNavigationBar()}
+        navigationBar={this._renderNavigationBarTwo()}
         sceneStyle={[ExNavigatorStyles.scene, this.props.sceneStyle]}
         style={[ExNavigatorStyles.navigator, this.props.style]}
       />
@@ -98,6 +137,22 @@ export default class ExNavigator extends React.Component {
       routeMapper: this._routeRenderer.navigationBarRouteMapper,
       style: [ExNavigatorStyles.bar, this.props.navigationBarStyle],
     });
+  }
+
+  // never called
+  @autobind
+  _setNavigationBarRef(navigationBar) {
+    this.__navigationBar = navigationBar
+  }
+
+  @autobind
+  showNavigationBar() {
+    this.__navigationBar && this.__navigationBar.show()
+  }
+
+  @autobind
+  hideNavigationBar() {
+    this.__navigationBar && this.__navigationBar.hide()
   }
 
   @autobind
