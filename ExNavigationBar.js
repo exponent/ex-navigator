@@ -158,11 +158,25 @@ var NavigatorNavigationBar = React.createClass({
       );
     }, this);
 
-    return (
-      <View style={[styles.navBarContainer, navBarStyle, this.props.style]}>
-        {components}
-      </View>
-    );
+    if (this.props.navState.routeStack.slice(-1)[0].showNavigationBar === false) {
+      return null;
+    } else if (this.props.navState.routeStack.slice(-1)[0].showNavigationBar === true) {
+      return (
+        <View style={[styles.navBarContainer, navBarStyle, this.props.style]}>
+          {components}
+        </View>
+      );
+    } else {
+      if (this.props.navigator.props.showNavigationBar === false) {
+        return null;
+      } else {
+        return (
+          <View style={[styles.navBarContainer, navBarStyle, this.props.style]}>
+            {components}
+          </View>
+        );
+      }
+    }
   },
 
   _getComponent: function(
