@@ -84,14 +84,14 @@ class NavigationBarRouteMapper {
     let previousIndex = index - 1;
     let previousRoute = state.routeStack[previousIndex];
     if (previousRoute.renderBackButton) {
-      return previousRoute.renderBackButton(this._navigator, previousIndex, state);
+      return previousRoute.renderBackButton(navigator, previousIndex, state);
     }
 
     let title;
     if (route.getBackButtonTitle){
-      title = route.getBackButtonTitle(this._navigator, index, state);
+      title = route.getBackButtonTitle(navigator, index, state);
     } else if (previousRoute.getTitle) {
-      title = previousRoute.getTitle(this._navigator, previousIndex, state);
+      title = previousRoute.getTitle(navigator, previousIndex, state);
     }
 
     if (title) {
@@ -111,7 +111,7 @@ class NavigationBarRouteMapper {
     return (
       <TouchableOpacity
         pressRetentionOffset={ExNavigatorStyles.barButtonPressRetentionOffset}
-        onPress={() => this._navigator.pop()}
+        onPress={() => navigator.pop()}
         style={[ExNavigatorStyles.barBackButton, styles.backButtonStyle]}>
         <BackIcon
           style={[
