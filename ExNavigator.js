@@ -6,6 +6,7 @@ import React, {
   PropTypes,
   Text,
   View,
+  InteractionManager,
 } from 'react-native';
 
 import invariant from 'invariant';
@@ -35,6 +36,7 @@ export default class ExNavigator extends React.Component {
     renderNavigationBar: PropTypes.func,
     renderBackButton: PropTypes.func,
     augmentScene: PropTypes.func,
+    blockDuringTransitions: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -73,6 +75,10 @@ export default class ExNavigator extends React.Component {
   }
 
   _renderScene(route: ExRoute, navigator: Navigator) {
+    if (this.props.blockDuringTransitions) {
+      this._isRenderingScene = true;
+    }
+
     // We need to subscribe to the navigation context before the navigator is
     // mounted because it emits a didfocus event when it is mounted, before we
     // can get a ref to it
@@ -94,6 +100,13 @@ export default class ExNavigator extends React.Component {
         ref: component => { this._firstScene = component; },
       });
     }
+
+    if (this.props.blockDuringTransitions) {
+      InteractionManager.runAfterInteractions(
+        () => this._isRenderingScene = false
+      );
+    }
+
     return scene;
   }
 
@@ -142,6 +155,10 @@ export default class ExNavigator extends React.Component {
     this._onWillFocusSubscription.remove();
     this._onDidFocusSubscription.remove();
     this._subscribedToFocusEvents = false;
+  }
+
+  _transitionsDisabled() {
+    return (this.props.blockDuringTransitions && this._isRenderingScene);
   }
 
   // Navigator properties
