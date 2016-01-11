@@ -112,17 +112,26 @@ class NavigationBarRouteMapper {
         </Text>;
     }
 
-    return (
-      <TouchableOpacity
-        pressRetentionOffset={ExNavigatorStyles.barButtonPressRetentionOffset}
-        onPress={() => this._navigator.pop()}
-        style={[ExNavigatorStyles.barBackButton, styles.backButtonStyle]}>
+    let backButtonIcon;
+    if (this._navigator.props.renderBackButtonIcon) {
+      backButtonIcon = this._navigator.props.renderBackButtonIcon();
+    } else {
+      backButtonIcon = (
         <BackIcon
           style={[
             ExNavigatorStyles.barButtonIcon,
             this._barButtonIconStyle,
           ]}
         />
+      );
+    }
+
+    return (
+      <TouchableOpacity
+        pressRetentionOffset={ExNavigatorStyles.barButtonPressRetentionOffset}
+        onPress={() => this._navigator.pop()}
+        style={[ExNavigatorStyles.barBackButton, styles.backButtonStyle]}>
+        {backButtonIcon}
         {buttonText}
       </TouchableOpacity>
     );
