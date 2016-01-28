@@ -149,12 +149,14 @@ export default class ExRouteRenderer {
     );
   }
 
-  configureScene(route: ExRoute): Object {
+  configureScene(route: ExRoute, defaultConfigureScene: Object): Object {
     if (route.configureScene) {
       let sceneConfig = route.configureScene();
       if (sceneConfig) {
         return sceneConfig;
       }
+    } else if (defaultConfigureScene) {
+      return defaultConfigureScene
     }
 
     if (Platform.OS === 'android') {
