@@ -86,7 +86,7 @@ export default class ExNavigator extends React.Component {
 
     let scene = this._routeRenderer.renderScene(route, this);
     if (typeof this.props.augmentScene === 'function') {
-      scene = this.props.augmentScene(scene, route);
+      scene = this.props.augmentScene(scene, route, navigator);
     }
     let firstRoute = navigator.getCurrentRoutes()[0];
     if (route === firstRoute) {
