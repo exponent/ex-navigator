@@ -36,11 +36,7 @@ class NavigationBarRouteMapper {
     this._titleStyle = styles.titleStyle;
     this._barButtonTextStyle = styles.barButtonTextStyle;
     this._barButtonIconStyle = styles.barButtonIconStyle;
-    if (styles.shortenTitle != null) {
-      this._shortenTitle = styles.shortenTitle;
-    } else {
-      this._shortenTitle = shortenTitle;
-    }
+    this._shortenTitle = (styles.shortenTitle != null) ? styles.shortenTitle : shortenTitle;
   }
 
   Title(
