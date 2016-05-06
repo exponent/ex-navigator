@@ -1,6 +1,6 @@
 'use strict';
-
-import React, {
+import React, { Component } from 'react';
+import {
   StyleSheet,
   View,
 } from 'react-native';
@@ -10,7 +10,7 @@ import Layout from './Layout';
 
 let { sources, ...iconPropTypes } = ResponsiveImage.propTypes;
 
-export class BackIcon extends React.Component {
+export class BackIcon extends Component {
   static propTypes = iconPropTypes;
 
   render() {
