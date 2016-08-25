@@ -257,5 +257,3 @@ let styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-
-export default ExRouteRenderer;
