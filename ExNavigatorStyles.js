@@ -22,7 +22,7 @@ let ExNavigatorStyles = StyleSheet.create({
     borderBottomWidth: Layout.pixel,
   },
   barTitleText: {
-    fontFamily: '.HelveticaNeueInterface-MediumP4',
+    fontWeight: 'bold',
     fontSize: 17,
     marginTop: 11 + Layout.pixel,
   },

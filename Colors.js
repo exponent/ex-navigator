@@ -1,7 +1,7 @@
 'use strict';
 
 let Colors = {
-  tint: 'rgb(0, 122, 255)',
+  tint: '#e10025',
 };
 
 export default Colors;
