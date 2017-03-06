@@ -22,6 +22,24 @@ import * as ExNavigatorIcons from './ExNavigatorIcons';
 
 import type * as ExRoute from './ExRoute';
 
+class NavigationBar extends React.Component {
+  render () {
+    let routeOptions = this.props.navState.routeStack.slice(-1)[0].showNavigationBar
+    let showNavigationBar = this.props.navigator.props.showNavigationBar
+
+    if (routeOptions !== undefined) {
+      showNavigationBar = routeOptions
+    }
+    if (showNavigationBar) {
+      return (
+        <Navigator.NavigationBar {...this.props} />
+      )
+    } else {
+      return null
+    }
+  }
+}
+
 export default class ExNavigator extends React.Component {
   static Styles = ExNavigatorStyles;
   static SceneConfigs = ExSceneConfigs;
@@ -43,7 +61,7 @@ export default class ExNavigator extends React.Component {
     ...Navigator.defaultProps,
     showNavigationBar: true,
     renderNavigationBar: props => {
-      return <Navigator.NavigationBar {...props} />
+      return <NavigationBar {...props} />
     },
   };
 
