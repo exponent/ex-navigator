@@ -9,51 +9,63 @@ export default {
   },
 
   jumpBack() {
-    return this.__navigator.jumpBack();
+    if (!this._transitionsDisabled())
+      return this.__navigator.jumpBack();
   },
 
   jumpForward() {
-    return this.__navigator.jumpForward();
+    if (!this._transitionsDisabled())
+      return this.__navigator.jumpForward();
   },
 
   jumpTo(route) {
-    return this.__navigator.jumpTo(route);
+    if (!this._transitionsDisabled())
+      return this.__navigator.jumpTo(route);
   },
 
   push(route) {
-    return this.__navigator.push(route);
+    if (!this._transitionsDisabled())
+      return this.__navigator.push(route);
   },
 
   pop() {
-    return this.__navigator.pop();
+    if (!this._transitionsDisabled())
+      return this.__navigator.pop();
   },
 
   replace(route) {
-    return this.__navigator.replace(route);
+    if (!this._transitionsDisabled())
+      return this.__navigator.replace(route);
   },
 
   replaceAtIndex(route, index) {
-    return this.__navigator.replaceAtIndex(route, index);
+    if (!this._transitionsDisabled())
+      return this.__navigator.replaceAtIndex(route, index);
   },
 
   replacePrevious(route) {
-    return this.__navigator.replacePrevious(route);
+    if (!this._transitionsDisabled())
+      return this.__navigator.replacePrevious(route);
   },
 
   resetTo(route) {
-    return this.__navigator.resetTo(route);
+    if (!this._transitionsDisabled())
+      return this.__navigator.resetTo(route);
   },
 
   immediatelyResetRouteStack(routeStack) {
-    return this.__navigator.immediatelyResetRouteStack(routeStack);
+    if (!this._transitionsDisabled())
+      return this.__navigator.immediatelyResetRouteStack(routeStack);
   },
 
   popToRoute(route) {
-    return this.__navigator.popToRoute(route);
+    if (!this._transitionsDisabled())
+      return this.__navigator.popToRoute(route);
   },
 
   popToTop() {
-    return this.__navigator.popToTop();
+    if (!this._transitionsDisabled())
+      return this.__navigator.popToTop();
   },
   
   replacePreviousAndPop(route) {
