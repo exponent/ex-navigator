@@ -37,6 +37,7 @@ export default class ExNavigator extends React.Component {
     renderNavigationBar: PropTypes.func,
     renderBackButton: PropTypes.func,
     augmentScene: PropTypes.func,
+    shortenTitle: PropTypes.func,
   };
 
   static defaultProps = {
@@ -54,6 +55,7 @@ export default class ExNavigator extends React.Component {
       titleStyle: props.titleStyle,
       barButtonTextStyle: props.barButtonTextStyle,
       barButtonIconStyle: props.barButtonIconStyle,
+      shortenTitle: props.shortenTitle,
     });
 
     this._renderScene = this._renderScene.bind(this);

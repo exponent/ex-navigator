@@ -27,6 +27,7 @@ type BarStyles = {
   titleStyle?: any;
   barButtonTextStyle?: any;
   barButtonIconStyle?: any;
+  shortenTitle?: any;
 };
 
 class NavigationBarRouteMapper {
@@ -35,6 +36,7 @@ class NavigationBarRouteMapper {
     this._titleStyle = styles.titleStyle;
     this._barButtonTextStyle = styles.barButtonTextStyle;
     this._barButtonIconStyle = styles.barButtonIconStyle;
+    this._shortenTitle = (styles.shortenTitle != null) ? styles.shortenTitle : shortenTitle;
   }
 
   Title(
@@ -53,7 +55,7 @@ class NavigationBarRouteMapper {
 
     return (
       <Text style={[ExNavigatorStyles.barTitleText, this._titleStyle]} allowFontScaling={false}>
-        {shortenTitle(route.getTitle(this._navigator, index, state))}
+        {this._shortenTitle(route.getTitle(this._navigator, index, state))}
       </Text>
     );
   }
