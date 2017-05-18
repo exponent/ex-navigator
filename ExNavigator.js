@@ -60,7 +60,7 @@ export default class ExNavigator extends React.Component {
       <Navigator
         {...this.props}
         ref={this._setNavigatorRef}
-        configureScene={route => this._routeRenderer.configureScene(route)}
+        configureScene={route => this._routeRenderer.configureScene(route, this.props.configureScene)}
         renderScene={this._renderScene}
         navigationBar={this._renderNavigationBar()}
         sceneStyle={[ExNavigatorStyles.scene, this.props.sceneStyle]}
