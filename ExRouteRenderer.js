@@ -44,7 +44,7 @@ class NavigationBarRouteMapper {
     state: Object
   ): ?React.Component {
     if (route.renderTitle) {
-      return route.renderTitle(this._navigator, index, state);
+      return route.renderTitle(route, this._navigator, index, state);
     }
 
     if (!route.getTitle) {
