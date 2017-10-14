@@ -120,14 +120,23 @@ class NavigationBarRouteMapper {
       );
     }
 
+    let backButtonIcon;
+    if (this._navigator.props.renderBackButtonIcon) {
+      backButtonIcon = this._navigator.props.renderBackButtonIcon();
+    } else {
+      backButtonIcon = (
+        <BackIcon
+          style={[ExNavigatorStyles.barButtonIcon, this._barButtonIconStyle]}
+        />
+      );
+    }
+
     return (
       <TouchableOpacity
         pressRetentionOffset={ExNavigatorStyles.barButtonPressRetentionOffset}
         onPress={() => this._navigator.pop()}
         style={[ExNavigatorStyles.barBackButton, styles.backButtonStyle]}>
-        <BackIcon
-          style={[ExNavigatorStyles.barButtonIcon, this._barButtonIconStyle]}
-        />
+        {backButtonIcon}
         {buttonText}
       </TouchableOpacity>
     );

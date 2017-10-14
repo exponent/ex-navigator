@@ -30,6 +30,7 @@ export default class ExNavigator extends React.Component {
     barButtonIconStyle: PropTypes.any,
     renderNavigationBar: PropTypes.func,
     renderBackButton: PropTypes.func,
+    renderBackButtonIcon: PropTypes.func,
     augmentScene: PropTypes.func,
   };
 
