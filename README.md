@@ -36,7 +36,7 @@ Github user [Thorenandresen](https://github.com/Thorbenandresen) has two very si
 
 ## Usage
 
-ExNavigator's component API looks very similar to Navigator's. You specify a `routeStack` and/or `initialRoute`, along with some styles. ExNavigator will render the navigation bar for you and accepts some props to style its contents. See `ExNavigator.propTypes` for the list of accepted props.
+ExNavigator's component API looks very similar to Navigator's. You specify a `initialRouteStack` and/or `initialRoute`, along with some styles. ExNavigator will render the navigation bar for you and accepts some props to style its contents. See `ExNavigator.propTypes` for the list of accepted props.
 
 **You must use JavaScript's `import` keyword to import ExNavigator. Do not use `require()`.**
 
